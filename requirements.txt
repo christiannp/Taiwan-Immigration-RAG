@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+langchain
+langchain-core
+langgraph
+qdrant-client
+google-generativeai
+playwright
+apscheduler
+pymupdf
+unstructured
+python-dotenv

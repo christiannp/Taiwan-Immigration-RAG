@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  # Qdrant vector database
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: always
+    container_name: qdrant
+    ports:
+      - "6333:6333"            # Qdrant HTTP API
+    volumes:
+      - ./qdrant_storage:/qdrant/storage  # Persistent data storage
+
+  # Backend application
+  app:
+    image: python:3.11
+    container_name: immigration-backend
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"          # FastAPI on port 8000
+    depends_on:
+      - qdrant
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - QDRANT_URL=${QDRANT_URL}
+    command: >
+      bash -c "pip install -r requirements.txt &&
+               uvicorn backend.server:app --host 0.0.0.0 --port 8000"
