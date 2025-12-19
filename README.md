@@ -1,6 +1,6 @@
 # 🇹🇼 Taiwan Immigration RAG
 
-A production-grade Retrieval-Augmented Generation (RAG) system that assists foreigners with Taiwan immigration questions using official data from the Taiwan National Immigration Agency.
+The official Taiwan immigration website provides very detailed explanations, including many specific cases. However, this level of detail is quite difficult to understand in practice. Rather than overwhelming users with all available information, we designed a system that personalizes responses based on the user’s situation. The LLM first asks targeted follow-up questions to gather the necessary context before generating an answer. As a result, the system delivers personalized and citation-backed responses in multiple languages.
 
 This system combines:
 - **LangGraph** for intelligent, personalized agent workflows  
